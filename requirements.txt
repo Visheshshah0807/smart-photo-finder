@@ -2,7 +2,5 @@ face_recognition
 opencv-python
 Pillow
 flask
-tkinter
-sqlite3
 torch
 git+https://github.com/openai/CLIP.git

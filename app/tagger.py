@@ -20,8 +20,7 @@ def tag_image_with_clip(image_path):
         with torch.no_grad():
             image_features = model.encode_image(image)
             text_features = model.encode_text(text)
-
-            logits_per_image, _ = model(image, text)
+            logits_per_image = (image_features @ text_features.T)
             probs = logits_per_image.softmax(dim=-1).cpu().numpy()[0]
 
         tags = [label for label, prob in zip(CANDIDATE_LABELS, probs) if prob > 0.15]
